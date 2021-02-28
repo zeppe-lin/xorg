@@ -1,0 +1,19 @@
+# Description: Wrapper library for evdev devices
+# URL: http://xorg.freedesktop.org
+# Depends on: meson ninja
+
+name=xorg-libevdev
+version=1.10.1
+release=1
+source=(https://www.freedesktop.org/software/libevdev/libevdev-$version.tar.xz)
+
+build() {
+	meson setup build libevdev-$version \
+		--prefix=/usr \
+		--buildtype=plain \
+		-D tests=disabled \
+		-D documentation=disabled
+
+	meson compile -C build -j ${JOBS:-1}
+	DESTDIR=$PKG meson install -C build
+}

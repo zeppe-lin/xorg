@@ -1,0 +1,17 @@
+# Description: X-Video information utility
+# URL: http://xorg.freedesktop.org
+# Depends on: xorg-libxv
+
+name=xorg-xvinfo
+version=1.1.4
+release=1
+source=(https://www.x.org/releases/individual/app/xvinfo-$version.tar.bz2)
+
+build() {
+	cd xvinfo-$version
+
+	./configure --prefix=/usr
+
+	make
+	make DESTDIR=$PKG install
+}

@@ -1,0 +1,20 @@
+# Description: OpenType text shaping engine
+# URL:         https://github.com/harfbuzz/harfbuzz
+# Depends on:  cairo gobject-introspection meson ninja
+
+name=harfbuzz
+version=2.7.4
+release=1
+source=(https://github.com/harfbuzz/harfbuzz/archive/$version/$name-$version.tar.gz)
+
+build() {
+	meson setup build $name-$version \
+		--prefix=/usr         \
+		--buildtype=plain     \
+		-D benchmark=disabled \
+		-D docs=disabled      \
+		-D graphite=auto      \
+
+	meson compile -C build -j ${JOBS:-1} -v
+	DESTDIR=$PKG meson install -C build
+}

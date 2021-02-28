@@ -1,0 +1,17 @@
+# Description: xorg lib liboldX
+# URL: http://xorg.freedesktop.org
+# Depends on: xorg-libx11
+
+name=xorg-liboldx
+version=1.0.1
+release=1
+source=(https://www.x.org/releases/individual/lib/liboldX-$version.tar.bz2)
+
+build() {
+	cd liboldX-$version
+
+	./configure --prefix=/usr
+
+	make
+	make DESTDIR=$PKG install
+}

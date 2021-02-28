@@ -1,0 +1,17 @@
+# Description: Create dependencies in Makefiles
+# URL: http://xorg.freedesktop.org
+# Depends on: xorg-xorgproto
+
+name=xorg-makedepend
+version=1.0.6
+release=1
+source=(https://www.x.org/releases/individual/util/makedepend-$version.tar.bz2)
+
+build() {
+	cd makedepend-$version
+
+	./configure --prefix=/usr
+
+	make
+	make DESTDIR=$PKG install
+}

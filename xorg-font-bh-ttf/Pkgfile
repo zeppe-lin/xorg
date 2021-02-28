@@ -1,0 +1,19 @@
+# Description: Xorg font font-bh-ttf
+# URL:         http://xorg.freedesktop.org
+# Depends on:  fontconfig xorg-mkfontscale
+
+name=xorg-font-bh-ttf
+version=1.0.3
+release=2
+source=(https://www.x.org/releases/individual/font/font-bh-ttf-$version.tar.bz2)
+
+build() {
+	cd font-bh-ttf-$version
+
+	./configure --prefix=/usr
+
+	make V=1
+	make DESTDIR=$PKG install
+
+	rm $PKG/usr/share/fonts/X11/TTF/fonts.{dir,scale}
+}

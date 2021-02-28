@@ -1,0 +1,19 @@
+# Description: xorg font font-screen-cyrillic
+# URL: http://xorg.freedesktop.org
+# Depends on: xorg-bdftopcf xorg-font-util xorg-mkfontscale
+
+name=xorg-font-screen-cyrillic
+version=1.0.4
+release=1
+source=(https://www.x.org/releases/individual/font/font-screen-cyrillic-$version.tar.bz2)
+
+build() {
+	cd font-screen-cyrillic-$version
+
+	./configure --prefix=/usr
+
+	make
+	make DESTDIR=$PKG install
+
+	rm $PKG/usr/share/fonts/X11/cyrillic/fonts.dir
+}

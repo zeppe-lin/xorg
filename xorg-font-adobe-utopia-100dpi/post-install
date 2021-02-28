@@ -1,0 +1,6 @@
+#!/bin/sh
+
+mkfontdir /usr/share/fonts/X11/100dpi
+mkfontscale /usr/share/fonts/X11/100dpi
+
+# End of file.

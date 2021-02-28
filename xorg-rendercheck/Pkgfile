@@ -1,0 +1,17 @@
+# Description: Test suite for the Render extension
+# URL: http://xorg.freedesktop.org
+# Depends on: xorg-libxrender
+
+name=xorg-rendercheck
+version=1.5
+release=2
+source=(https://www.x.org/releases/individual/app/rendercheck-$version.tar.bz2)
+
+build() {
+	cd rendercheck-$version
+
+	./configure --prefix=/usr
+
+	make
+	make DESTDIR=$PKG install
+}
